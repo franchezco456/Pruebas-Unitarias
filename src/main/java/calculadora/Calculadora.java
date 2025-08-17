@@ -11,12 +11,30 @@ public class Calculadora {
         return a / b;
     }
 
-
     public int restar(int a, int b) {
-        return a - b;
+        try {
+            int resultado = a - b;
+
+
+            if ((b > 0 && resultado > a) || (b < 0 && resultado < a)) {
+                throw new ArithmeticException("Overflow/Underflow en resta");
+            }
+
+            return resultado;
+
+        } catch (ArithmeticException e) {
+            System.err.println("Error aritmético: " + e.getMessage());
+            return 0;
+        }
     }
 
     public int multiplicar(int a, int b) {
-        return a * b;
+        try {
+            return Math.multiplyExact(a, b);
+
+        } catch (ArithmeticException e) {
+            System.err.println("Error en multiplicación: " + e.getMessage());
+            return 0; 
+        }
     }
 }
