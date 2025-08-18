@@ -23,7 +23,6 @@ public class User_Management {
         if (nuevo.getId() <= 0) throw new Exception("El ID no puede ser menor o igual a 0.");
         if (nuevo.getEmail() == null || nuevo.getPassword() == null || nuevo.getUser_name() == null || nuevo.getName() == null || nuevo.getLast_name() == null || nuevo.getId() == null)throw new Exception("Por favor diligencie todos los parametros.");
         if (list_Users == null) throw new Exception("La lista de usuarios no está inicializada");
-        if (list_Users.isEmpty()) throw new NullPointerException("Lista de usuarios vacia");
         for (User usuario : list_Users) {
             if (Objects.equals(usuario.getEmail(), nuevo.getEmail()))
                 throw new Exception("Ya existe un usuario con este correo");
