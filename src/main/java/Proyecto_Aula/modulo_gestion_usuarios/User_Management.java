@@ -9,38 +9,47 @@ public class User_Management {
     private ArrayList<User> list_Users = new ArrayList<User>();
 
     public User iniciarSesion(String email, String password) throws Exception {
+        if (email == null || password == null) throw new Exception("El correo o contraseña no puede ser nulo.");
         if (list_Users == null) throw new Exception("La lista de usuarios no está inicializada");
         if (list_Users.isEmpty()) throw new Exception("Lista de usuarios vacia");
         for (User usuario : list_Users) {
-            if (Objects.equals(usuario.getEmail(), email) && Objects.equals(usuario.getPassword(), password)) return usuario;
+            if (Objects.equals(usuario.getEmail(), email) && Objects.equals(usuario.getPassword(), password))
+                return usuario;
         }
         throw new Exception("Correo o contraseña incorrectos");
     }
 
     public User RegistrarUsuario(User nuevo) throws Exception {
+        if (nuevo.getId() <= 0) throw new Exception("El ID no puede ser menor o igual a 0.");
+        if (nuevo.getEmail() == null || nuevo.getPassword() == null || nuevo.getUser_name() == null || nuevo.getName() == null || nuevo.getLast_name() == null || nuevo.getId() == null)throw new Exception("Por favor diligencie todos los parametros.");
         if (list_Users == null) throw new Exception("La lista de usuarios no está inicializada");
         if (list_Users.isEmpty()) throw new NullPointerException("Lista de usuarios vacia");
         for (User usuario : list_Users) {
-            if (Objects.equals(usuario.getEmail(), nuevo.getEmail())) throw new Exception("Ya existe un usuario con este correo");
-            if (Objects.equals(usuario.getUser_name(), nuevo.getUser_name())) throw new Exception("Ya existe un usuario con este nombre de usuario");
+            if (Objects.equals(usuario.getEmail(), nuevo.getEmail()))
+                throw new Exception("Ya existe un usuario con este correo");
+            if (Objects.equals(usuario.getUser_name(), nuevo.getUser_name()))
+                throw new Exception("Ya existe un usuario con este nombre de usuario");
             if (Objects.equals(usuario.getId(), nuevo.getId())) throw new Exception("Ya existe un usuario con este Id");
         }
-            list_Users.add(nuevo);
-            return nuevo;
+        list_Users.add(nuevo);
+        return nuevo;
     }
 
 
-    public User ConsultarUsuario(int id)  throws Exception {
+    public User ConsultarUsuario(int id) throws Exception {
+        if (id <= 0) throw new Exception("El ID no puede ser menor o igual a 0.");
         if (list_Users == null) throw new Exception("La lista de usuarios no está inicializada");
         if (list_Users.isEmpty()) throw new Exception("Lista de usuarios vacía");
         for (User usuario : list_Users) {
             if (usuario.getId() == id) return usuario;
         }
-        throw  new Exception("El usuario no existe");
+        throw new Exception("El usuario no existe");
     }
 
 
     public User actualizarUsuario(User usuarioActualizado) throws Exception {
+        if (usuarioActualizado.getId() <= 0) throw new Exception("El ID no puede ser menor o igual a 0.");
+        if (usuarioActualizado.getEmail() == null || usuarioActualizado.getPassword() == null || usuarioActualizado.getUser_name() == null)throw new Exception("Por favor diligencie todos los parametros.");
         if (list_Users == null) throw new Exception("La lista de usuarios no está inicializada");
         if (list_Users.isEmpty()) throw new Exception("Lista de usuarios vacia");
         for (User usuario : list_Users) {
@@ -56,6 +65,7 @@ public class User_Management {
     }
 
     public boolean eliminarUsuario(int id) throws Exception {
+        if (id <= 0) throw new Exception("El ID no puede ser menor o igual a 0.");
         if (list_Users == null) throw new Exception("La lista de usuarios no está inicializada");
         if (list_Users.isEmpty()) throw new Exception("Lista de usuarios vacía");
         for (int i = 0; i < list_Users.size(); i++) {
@@ -68,4 +78,4 @@ public class User_Management {
         }
         throw new Exception("Usuario a eliminar no existe");
     }
-    }
+}
