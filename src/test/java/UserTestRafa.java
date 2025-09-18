@@ -1,7 +1,6 @@
-package Proyecto_Aula;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 class UserTestRafa {
     User user = new User("RafaPro", "Rafael", "Mallarino", 7, "rafa@example.com", "contra123");

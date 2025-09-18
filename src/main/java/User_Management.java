@@ -1,7 +1,3 @@
-package Proyecto_Aula.modulo_gestion_usuarios;
-
-import Proyecto_Aula.User;
-
 import java.util.ArrayList;
 import java.util.Objects;
 

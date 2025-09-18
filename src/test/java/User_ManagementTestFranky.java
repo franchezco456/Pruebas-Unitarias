@@ -1,6 +1,5 @@
-package Proyecto_Aula.modulo_gestion_usuarios;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import Proyecto_Aula.User;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

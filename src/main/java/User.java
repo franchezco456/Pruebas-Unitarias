@@ -1,5 +1,3 @@
-package Proyecto_Aula;
-
 public class User {
 
     private String user_name;
